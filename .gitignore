@@ -1,0 +1,6 @@
+tmp
+build/
+build.log
+.DS_Store
+*.swp
+.settings
