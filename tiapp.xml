@@ -16,7 +16,7 @@
     <sdk-version>2.1.3.GA</sdk-version>
     <id>com.outerswellproject.osp02</id>
     <name>Osp02</name>
-    <version>1.0</version>
+    <version>1.0.3</version>
     <publisher>ryoutakatou</publisher>
     <url>http://</url>
     <description>not specified</description>
@@ -53,5 +53,6 @@
     </mobileweb>
     <modules>
         <module platform="commonjs" version="2.3.0">ti.cloud</module>
+        <module version="0.4.2">tibar</module>
     </modules>
 </ti:app>

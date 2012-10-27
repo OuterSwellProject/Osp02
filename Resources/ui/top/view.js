@@ -13,7 +13,7 @@ function TopView() {
 
   self.add(titleLabel);
   self.add(table);
-  
+
   // 画面更新のイベント定義
   Ti.App.addEventListener('top:display',function(e){
   });
