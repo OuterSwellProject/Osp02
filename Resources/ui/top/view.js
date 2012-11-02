@@ -6,13 +6,18 @@ function TopView() {
   
   var style = require("ui/top/style")
 
+  // タイトルラベル
   var titleLabel = Ti.UI.createLabel(style["titleLabel"]);
+  self.add(titleLabel);
   
+  // 画像作成
+  var coverflow = makeCoverflow();
+  self.add(coverflow);
+
   // テーブルビュー作成
   var table = makeInfoTable();
-
-  self.add(titleLabel);
   self.add(table);
+
 
   // 画面更新のイベント定義
   Ti.App.addEventListener('top:display',function(e){
@@ -28,6 +33,47 @@ module.exports = TopView;
 
 
 
+// 画像作成 //{{{
+function makeCoverflow() {
+
+  var images = [];
+  for (var c = 0; c < 8; c++) {
+    // Resourcesディレクトリからの相対パス？
+    images[c]='./images/n0'+ (c+1) +'.jpg';
+  }
+
+  var rowData = [];
+  var data = ['あああ', 'いいい', 'ううう', 'えええ', 'おおお', 'かかか', 'ききき'];
+
+
+  for (var i = 0; i < data.length; i++) {
+    // row
+    var row = Ti.UI.createTableViewRow({
+      selectedBackgroundColor : '#fff',
+      className :'datarow',
+    });
+        
+    // title
+    var title = Ti.UI.createLabel({
+      text:data[i]
+    });
+    title.rowNum = i;
+    row.add(title);
+
+    // add row
+    rowData.push(row);
+  }
+
+  // カバーフロー作成
+  return Ti.UI.iOS.createCoverFlowView({
+    images: images,
+    backgroundColor: '#000',
+    height:200,
+    top:0
+  });
+
+}
+//}}}
 
 // お知らせ一覧作成 //{{{
 function makeInfoTable() {
@@ -48,9 +94,11 @@ function makeInfoTable() {
   // テーブルビュー作成
   return Ti.UI.createTableView({
     data : rowData,
-    rowHeight : 80
+    rowHeight : 80,
+    top:200
   });
   
 
 }
 //}}}
+
